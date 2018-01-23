@@ -64,9 +64,6 @@ AS BEGIN
 		SET @counter += 1;
 	END
 END
-GO
-
-EXEC GeradeUndUngeradeZahlenBis 1000;
 
 GO
 CREATE PROCEDURE AlleKundenAusgeben
@@ -118,21 +115,19 @@ AS BEGIN
 END
 GO
 
-CREATE PROCEDURE GirokontoZeile @Kunde SMALLINT
+CREATE PROCEDURE GirokontoZeile @Kontonummer INT
 AS BEGIN
 	WITH GirokontenMitZeilennummer AS
 	(
 		SELECT 
-			ROW_NUMBER() OVER(ORDER BY p_f_kunden_nr ASC) as RowNumber, 
-			p_f_kunden_nr
+			ROW_NUMBER() OVER(ORDER BY p_f_kunden_nr ASC) as RowNumber, *
 		FROM T_Girokonten
 	)
-	SELECT RowNumber, T_Girokonten.*
-	FROM T_Girokonten
-		JOIN GirokontenMitZeilennummer AS [Row]
-			ON [Row].p_f_kunden_nr = T_Girokonten.p_f_kunden_nr
-	WHERE T_Girokonten.p_f_kunden_nr = @Kunde
+	SELECT *
+	FROM  GirokontenMitZeilennummer
+	WHERE kontonummer = @Kontonummer
 END
 GO
+
 
 ROLLBACK
