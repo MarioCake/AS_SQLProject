@@ -1,7 +1,12 @@
 BEGIN TRAN
 
+
+/*
+	|---------------|
+	|  Aufgabe 1a   |
+	|---------------|
+*/
 GO
--- DROP PROCEDURE SchutzmaßnahmenBenötigt
 CREATE PROCEDURE SchutzmaßnahmenBenötigt 
 	@preis MONEY, @artikel CHAR(4) 
 AS
@@ -13,7 +18,11 @@ BEGIN
 END
 GO
 
--- DROP PROCEDURE BonusErinnerung
+/*
+	|---------------|
+	|  Aufgabe 1b   |
+	|---------------|
+*/
 CREATE PROCEDURE BonusErinnerung
 AS
 BEGIN
@@ -23,9 +32,14 @@ BEGIN
 	ELSE
 		PRINT 'Gönn'' dir mal was Chef!';
 END
-GO
 
--- DROP PROCEDURE AendereStatus
+
+/*
+	|---------------|
+	|  Aufgabe 1c   |
+	|---------------|
+*/
+GO
 CREATE PROCEDURE AendereStatus
 AS
 BEGIN
@@ -35,9 +49,14 @@ BEGIN
 	WHERE 
 		letztebestellung < DATEADD(MONTH, -3, GETDATE());
 END
-GO
 
--- DROP PROCEDURE KundenBonusAnbieten
+
+/*
+	|---------------|
+	|  Aufgabe 1d   |
+	|---------------|
+*/
+GO
 CREATE PROCEDURE KundenBonusAnbieten @Kunde SMALLINT
 AS
 BEGIN
@@ -49,9 +68,14 @@ BEGIN
 	IF @anzahlBestellungen > 5
 		PRINT 'Kunde ' + CONVERT(VARCHAR, @Kunde) + ' Bonus anbieten';
 END
-GO
 
--- DROP PROCEDURE GeradeUndUngeradeZahlenBis
+
+/*
+	|----------------|
+	|  Aufgabe 1e/i  |
+	|----------------|
+*/
+GO
 CREATE PROCEDURE GeradeUndUngeradeZahlenBis @Zahl INT
 AS BEGIN
 	DECLARE @counter INT = 1;
@@ -65,6 +89,11 @@ AS BEGIN
 	END
 END
 
+/*
+	|---------------|
+	|  Aufgabe 1f   |
+	|---------------|
+*/
 GO
 CREATE PROCEDURE AlleKundenAusgeben
 AS BEGIN
@@ -75,8 +104,14 @@ AS BEGIN
 
 	PRINT @msg;
 END
-GO
 
+
+/*
+	|---------------|
+	|  Aufgabe 1g   |
+	|---------------|
+*/
+GO
 CREATE PROCEDURE KundenAbteilungen
 AS BEGIN
 	DECLARE @msg VARCHAR(MAX) = '';
@@ -113,14 +148,21 @@ AS BEGIN
 
 	PRINT @msg;
 END
-GO
 
+
+/*
+	|---------------|
+	|  Aufgabe 1h   |
+	|---------------|
+*/
+GO
 CREATE PROCEDURE GirokontoZeile @Kontonummer INT
 AS BEGIN
 	WITH GirokontenMitZeilennummer AS
 	(
 		SELECT 
-			ROW_NUMBER() OVER(ORDER BY p_f_kunden_nr ASC) as RowNumber, *
+			ROW_NUMBER() OVER(ORDER BY p_f_kunden_nr ASC) as RowNumber,
+			*
 		FROM T_Girokonten
 	)
 	SELECT *

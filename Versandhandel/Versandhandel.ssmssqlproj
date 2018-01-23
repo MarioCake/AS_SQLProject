@@ -26,9 +26,9 @@
           <FullPath>03.01.2018 Procedures.sql</FullPath>
         </FileNode>
         <FileNode Name="22.01.2018 Steuerstrukturen.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
-          <AssociatedConnUserName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:192.168.95.31:False:Radl112</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>192.168.95.31</AssociatedConnSrvName>
+          <AssociatedConnUserName>Radl112</AssociatedConnUserName>
           <FullPath>22.01.2018 Steuerstrukturen.sql</FullPath>
         </FileNode>
         <FileNode Name="DELETE.sql">
@@ -42,6 +42,12 @@
           <AssociatedConnSrvName />
           <AssociatedConnUserName />
           <FullPath>INIT.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery1.sql">
+          <AssociatedConnectionMoniker />
+          <AssociatedConnSrvName />
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery1.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
